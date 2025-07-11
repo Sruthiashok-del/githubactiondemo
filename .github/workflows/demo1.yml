@@ -1,0 +1,28 @@
+# hello.py
+print("Hello, World!")
+Then your .github/workflows/hello-world.yml workflow could look like this:
+
+yaml
+Copy
+Edit
+name: Hello World
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run Hello World
+        run: python hello.py
